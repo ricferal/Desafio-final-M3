@@ -20,7 +20,7 @@ O pipeline, de ponta a ponta:
 ```
 ├── README.md
 ├── requirements.txt
-├── config.py               <- credenciais reais; você cria o seu (não é versionado)
+├── config.py               <- você cria o seu (não é versionado)
 ├── .gitignore              <- ignora o config.py real
 ├── src/
 │   ├── extracao.py        <- extract() / save_raw()
@@ -49,29 +49,8 @@ pip install -r requirements.txt
 
 ### 3. Configurar credenciais (config.py)
 
-O `config.py` não vem no repositório — crie-o manualmente na raiz do projeto, com este conteúdo, substituindo pelos seus dados reais:
+O `config.py` não vem no repositório — crie-o manualmente na raiz do projeto.
 
-```python
-POSTGRES_HOST = "localhost"
-POSTGRES_PORT = "5432"
-POSTGRES_DB = "SEU_BANCO"
-POSTGRES_USER = "SEU_USUARIO"
-POSTGRES_PASSWORD = "SUA_SENHA"
-
-MONGO_DB_NAME = "SEU_BANCO_MONGO"
-MONGO_URI = "mongodb+srv://SEU_USUARIO:SUA_SENHA@SEU_CLUSTER.mongodb.net/?retryWrites=true&w=majority"
-
-
-def get_postgres_url() -> str:
-    return (
-        f"postgresql+psycopg2://{POSTGRES_USER}:{POSTGRES_PASSWORD}"
-        f"@{POSTGRES_HOST}:{POSTGRES_PORT}/{POSTGRES_DB}"
-    )
-
-
-def get_mongo_uri() -> str:
-    return MONGO_URI
-```
 
 Salve como `config.py` na raiz do projeto (ao lado do `README.md`). Como ele está no `.gitignore`, nunca será commitado — cada pessoa que clonar o repositório precisa criar o seu próprio.
 
